@@ -1,0 +1,113 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="setup-route container-fluid text-center">
+    <div class="row">
+
+        <div class="col-xs-2">
+            <ul class="list-unstyled door-list">
+                <li ng-repeat="d in data.doorStatusList">
+                    <a ng-href="/setup/{{d.day}}" ng-class="d.day == number ? 'active' : ''">
+                        <span>Tür {{d.day}}</span>
+                        <span class="glyphicon glyphicon-ok done-icon" ng-if="d.done"></span>
+                        <span class="glyphicon glyphicon-remove not-done-icon" ng-if="!d.done"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-10">
+            <div ng-if="!number">
+                Bitte wähle eine Tür.
+            </div>
+
+            <div ng-if="number">
+                <button class="btn btn-default pull-left" ng-click="goto(prevNumber)"><span class="glyphicon glyphicon-chevron-left"></span> Tür {{prevNumber}}</button>
+                <button class="btn btn-default pull-right" ng-click="goto(nextNumber)">Tür {{nextNumber}} <span class="glyphicon glyphicon-chevron-right"></span></button>
+                <h1>Tür {{number}}</h1>
+
+                <div class="btn-group edit-buttons">
+                    <button class="btn btn-default" ng-click="insertImageDialog()">
+                        <span class="glyphicon glyphicon-picture"></span>
+                        ext. Bild einfügen
+                    </button>
+
+                    <span class="btn btn-default btn-file">
+                        <span class="glyphicon glyphicon-upload"></span>
+                        Bild hochladen
+                        <input type="file" nv-file-select="" uploader="uploader" multiple  />
+                    </span>
+                    <button class="btn btn-default" ng-click="imageFromUrl()">
+                        <span class="glyphicon glyphicon-upload"></span>
+                        Bild von URL
+                    </button>
+
+                    <button class="btn btn-default" ng-click="showUploads()">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                        Hochgeladene Bilder ansehen
+                    </button>
+                </div>
+                <form class="form">
+                    <textarea ng-model="data.content"></textarea>
+                </form>
+
+                <button class="btn btn-info" ng-click="updatePreview()">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                    Vorschau aktualisieren
+                </button>
+                <button class="btn btn-primary" ng-click="save()">
+                    <span class="glyphicon glyphicon-floppy-save"></span>
+                    Speichern
+                </button>
+                <span title="erfolgreich gespeichert!" class="just-saved-info label label-success" ng-class="{visible: data.justSaved}"><span class="glyphicon glyphicon-ok"></span></span>
+
+                <div class="content-preview"  html-content="data.preview"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div ng-if="uploader.isUploading" class="upload-progress">
+        <div class="container well well-lg">
+            Foto wird hochgeladen...
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" ng-style="{width: uploader.progress + '%'}" >
+                    {{uploader.progress}}%
+                </div>
+            </div>
+            <button class="btn btn-danger" ng-click="uploader.cancelAll()">Hochladen Abbrechen</button>
+        </div>
+    </div>
+
+    <div ng-if="downloading" class="downloading">
+        <div class="container well well-lg">
+            Foto wird heruntergeladen...
+            <br>
+            <img src="/assets/images/ajax-loader.gif" />
+        </div>
+    </div>
+
+    <div class="show-uploads text-left slide-in" ng-if="su.show">
+        <h2>Hochgeladene Dateien</h2>
+
+        <ul class="list-unstyled">
+            <table class="table table-condensed table-striped">
+                <thead>
+                <tr>
+                    <th>Dateiname</th>
+                    <th>Als Link einfügen</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="file in su.files">
+                    <td>{{file}}</td>
+                    <td><a href="#" ng-click="insertImage(file)">einfügen</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-default pull-right" ng-click="su.show=false">Schließen</button>
+        </ul>
+    </div>
+
+</div>
+
+
+

@@ -1,0 +1,38 @@
+<div class="door-route container-fluid text-center">
+    <div class="background"> </div>
+
+    <div class="loading" ng-if="ui.loading">
+    </div>
+    <div ng-if="!ui.loading">
+        <h1>Tür {{ui.day}}</h1>
+
+        <div class="too-early jumbotron" ng-if="ui.tooEarly">
+            <h1>Der frühe Vogel...</h1>
+
+            <p>
+                ... fängt den Wurm. Aber trotzdem bist du zu früh und hier gibt es nichts zu sehen.
+                Heute ist doch erst der {{now | date:'d. MMMM'}}.
+            </p>
+        </div>
+
+        <div ng-if="!ui.tooEarly">
+            <div class="not-done jumbotron" ng-if="!ui.done">
+                <h1>Oh je...</h1>
+
+                <p>Da waren wir nicht schnell genug. :( <br>
+                    Diese Tür ist ja noch gar nicht gefüllt, am besten gleich meckern!
+                </p>
+            </div>
+
+            <div class="content" html-content="ui.content"></div>
+
+        </div>
+
+        <div class="text-center buttons">
+            <a ng-href="{{mail}}" class="btn btn-info" target="_blank">Nachricht an Britta & Holger</a>
+            <a href="/" class="btn btn-default">Zurück zum Kalender</a>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,5 @@
+<div class="advent-calendar" ng-style="containerStyle">
+    <img class="bg-image" ng-src="{{imageUrl}}" />
+
+    <div class="door" ng-repeat="d in doors" ng-style="d.style" ng-click="openDoor(d.number)"><span>{{d.number}}</span></div>
+</div>

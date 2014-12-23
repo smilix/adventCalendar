@@ -1,0 +1,40 @@
+.main-route {
+  background: #000000;
+}
+
+.advent-calendar {
+  margin: auto;
+  position: relative;
+
+  .bg-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .door {
+    position: absolute;
+
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px #888;
+    //    box-shadow: 0 0 5px 5px #888;
+
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 5px 5px #4ab8ff;
+      background-color: rgba(74, 184, 255, 0.10);
+    }
+
+    display: table;
+
+    span {
+      display: table-cell;
+      text-align: center;
+      font-size: 40px;
+      color: #ffffff;
+      vertical-align: middle;
+    }
+  }
+}

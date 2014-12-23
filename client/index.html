@@ -1,0 +1,64 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(client) app/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,client}) app/app.css -->
+    <link rel="stylesheet" href="app/app.css">
+    <!-- injector:css -->
+    <!-- endinjector -->
+    <!-- endbuild -->
+</head>
+<body ng-app="adventApp">
+<!-- Add your site or application content here -->
+<div add-route-name>
+    <div ng-view="" class="fading"></div>
+</div>
+
+<!-- build:js({client,node_modules}) app/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/lodash/dist/lodash.compat.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,client}) app/app.js -->
+<script src="app/app.js"></script>
+<!-- injector:js -->
+<script src="app/directives/addRouteName.js"></script>
+<script src="app/directives/htmlContent.js"></script>
+<script src="app/door/door.controller.js"></script>
+<script src="app/door/door.js"></script>
+<script src="app/main/adventCalendar.directive.js"></script>
+<script src="app/main/main.controller.js"></script>
+<script src="app/main/main.js"></script>
+<script src="app/services/day.service.js"></script>
+<script src="app/services/image.service.js"></script>
+<script src="app/setup/setup.controller.js"></script>
+<script src="app/setup/setup.js"></script>
+<script src="components/navbar/navbar.controller.js"></script>
+<!-- endinjector -->
+<!-- endbuild -->
+</body>
+</html>
